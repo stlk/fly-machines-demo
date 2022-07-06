@@ -9,7 +9,7 @@ docker push stlk/fly-machines-demo:latest
 
 #### Follow the docs
 
-https://fly.io/docs/reference/machines/
+Follow the docs https://fly.io/docs/reference/machines/ to make sure following steps are up to date.
 
 ```sh
 flyctl machines api-proxy
@@ -22,6 +22,10 @@ POST http://{{FLY_API_HOSTNAME}}/v1/apps
   "app_name": "fly-machines-demo",
   "org_slug": "personal"
 }
+```
+
+```sh
+flyctl ips allocate-v4 -a fly-machines-demo
 ```
 
 ```
