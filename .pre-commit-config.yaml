@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/ambv/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        args: ['-l 119']
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.6.1
+    hooks:
+      - id: prettier
+        entry: prettier --write --single-quote --trailing-comma=all
+        files: "\\.(\
+          css|less|scss\
+          |graphql|gql\
+          |js|jsx\
+          |json\
+          |md|markdown|mdown|mkdn\
+          |mdx\
+          |ts|tsx\
+          |yaml|yml\
+          )$"
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  - repo: https://github.com/PyCQA/isort
+    rev: '5.10.1'
+    hooks:
+      - id: isort
+        args: ['--profile', 'black']
+  - repo: https://github.com/rtts/djhtml
+    rev: v1.5.0
+    hooks:
+      - id: djhtml

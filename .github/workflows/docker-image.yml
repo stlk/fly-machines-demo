@@ -1,0 +1,19 @@
+name: docker
+on:
+  workflow_dispatch:
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: build docker image
+        run: |-
+          docker build -t stlk/fly-machines-demo:latest .
+
+      - name: publish image
+        run: |-
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login --username ${{ secrets.DOCKER_USER }} --password-stdin
+          docker push stlk/fly-machines-demo:latest
+          docker logout
